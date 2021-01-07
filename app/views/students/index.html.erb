@@ -11,7 +11,15 @@
             <div class="card-content white-text">
                 <span class="card-title"><%= student.name %></span>
                 <p><%= student.email %></p>
-                <p>Course Enrollment: None</p>
+                <p>Course Enrollment: 
+                <% if student.courses.empty? %>
+                    -
+                <% else %>
+                        <% student.courses.each do |course| %>
+                            <li><%= course.name %></li>
+                        <% end %>
+                <% end %>                
+                </p>
             </div>
             <div class="card-action">
                 <%= link_to "View profile", student_path(student) %>
